@@ -101,13 +101,13 @@ Create .env files for both client and server.
 
 Variables typically include:
 
-MongoDB URI
+- MongoDB URI
 
-Clerk frontend & backend keys
+- Clerk frontend & backend keys
 
-Upstash Redis / rate limiter keys
+- Upstash Redis / rate limiter keys
 
-JWT or session secrets
+- JWT or session secrets
 
 ### 4. Run locally
 Client:
