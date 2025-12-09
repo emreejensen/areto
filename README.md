@@ -4,9 +4,9 @@ Areto is a full-stack study platform built as a **Senior Software Development Ca
 It helps users learn through **flashcards**, **quizzes**, and **custom study sets** created by either the user or an administrator.
 
 The design and functionality draw inspiration from:
-- **Quizlet**
-- **Kahoot**
-- **You Can’t Do Simple Maths Under Pressure**
+- [**Quizlet**](https://quizlet.com/latest)
+- [**Kahoot**](https://kahoot.it/)
+- [**You Can’t Do Simple Maths Under Pressure**](https://www.tomscott.com/usvsth3m/maths/)
 
 Areto emphasizes simplicity, speed, and an enjoyable study experience.
 
