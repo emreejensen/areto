@@ -124,7 +124,7 @@ const QuizDashboardPage = () => {
                   onClick={() => setSortBy('myQuizzes')}
                   className={`btn btn-sm ${sortBy === 'myQuizzes' ? 'btn-primary' : 'btn-ghost'}`}
                 >
-                  My Quizzes First
+                  My Quizzes
                 </button>
               </SignedIn>
               <button
