@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import axios from 'axios'; 
+import { quizApi } from '../lib/api'; // Add this import at top
 
 const GlobalContext = createContext();
 
@@ -17,12 +18,11 @@ export const GlobalContextProvider = ({ children }) => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await axios.get('/api/quizzes'); 
-            setAllQuizzes(response.data);
+            const data = await quizApi.getAllQuizzes();
+            setAllQuizzes(data);
         } catch (err) {
             console.error("Failed to fetch quizzes:", err);
             setError("Failed to load quizzes from the server.");
-            toast.error("Could not load quizzes. Server might be down.");
         } finally {
             setIsLoading(false);
         }
