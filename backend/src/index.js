@@ -22,6 +22,15 @@ app.use((req, res, next) => {
     next();
 });
 
+// Root route - prevents 404 when visiting backend URL directly
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Areto Quiz API',
+    status: 'running',
+    version: '1.0.0'
+  });
+});
+
 // app.use("/api/notes", notesRoutes); //
 app.use("/api/quizzes", quizRoutes);
 
