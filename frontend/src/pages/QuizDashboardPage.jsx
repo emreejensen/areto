@@ -30,12 +30,6 @@ const QuizDashboardPage = () => {
     },
   });
 
-  useEffect(() => {
-    if (error) {
-      toast.error('Failed to load quizzes', { id: 'quiz-load-error' });
-    }
-  }, [error]);
-
   // Sort quizzes based on selected option
   const sortedQuizzes = quizzes ? [...quizzes].sort((a, b) => {
     if (sortBy === 'myQuizzes') {

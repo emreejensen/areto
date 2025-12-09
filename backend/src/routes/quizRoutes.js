@@ -9,7 +9,12 @@ router.get('/', async (req, res) => {
     const quizzes = await Quiz.find().select(
       'title icon quizQuestions totalPlays averageSuccessRate createdAt createdBy'
     );
-    res.status(200).json(quizzes);
+    // Round success rates before sending
+    const formattedQuizzes = quizzes.map(quiz => ({
+      ...quiz.toObject(),
+      averageSuccessRate: Math.round(quiz.averageSuccessRate || 0)
+    }));
+    res.status(200).json(formattedQuizzes);
   } catch (error) {
     console.error("Error fetching quizzes:", error.message);
     res.status(500).json({ message: 'Server Error: Could not fetch quizzes.' });
@@ -90,12 +95,12 @@ router.post('/:id/complete', async (req, res) => {
     // Calculate success rate for this attempt
     const successRate = (score / totalQuestions) * 100;
 
-    // Update total plays
+    // Update total plays FIRST
     quiz.totalPlays += 1;
 
-    // Update average success rate
+    // Calculate and round average success rate
     const currentTotal = quiz.averageSuccessRate * (quiz.totalPlays - 1);
-    quiz.averageSuccessRate = (currentTotal + successRate) / quiz.totalPlays;
+    quiz.averageSuccessRate = Math.round((currentTotal + successRate) / quiz.totalPlays);
 
     await quiz.save();
 
