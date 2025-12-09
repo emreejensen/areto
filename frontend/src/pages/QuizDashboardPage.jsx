@@ -79,75 +79,82 @@ const QuizDashboardPage = () => {
   return (
     <div className="min-h-screen bg-base-200" data-theme="night">
       {/* Page Header */}
-      <div className="bg-base-100 shadow-sm">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-4xl font-bold text-primary flex items-center gap-3">
-                <BarChart3 className="w-10 h-10" />
-                Quiz Dashboard
-              </h1>
-              <SignedIn>
-                <p className="text-base-content/70 mt-2">
-                  Welcome back, {user?.firstName || 'User'}! 👋
-                </p>
-              </SignedIn>
-              <SignedOut>
-                <p className="text-base-content/70 mt-2">
-                  Browse quizzes or sign in to create your own
-                </p>
-              </SignedOut>
-            </div>
-            <SignedIn>
-              <button
-                onClick={handleCreateQuiz}
-                className="btn btn-primary btn-lg gap-2"
-              >
-                <Plus className="w-5 h-5" />
-                Create New Quiz
-              </button>
-            </SignedIn>
-          </div>
-        </div>
+<div className="bg-base-100 shadow-sm">
+  <div className="container mx-auto px-4 py-6">
+    <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-4">
+      {/* Title + Welcome */}
+      <div className="text-center sm:text-left">
+        <h1 className="text-4xl font-bold text-primary flex items-center justify-center sm:justify-start gap-3">
+          <BarChart3 className="w-10 h-10" />
+          Quiz Dashboard
+        </h1>
+        <SignedIn>
+          <p className="text-base-content/70 mt-2">
+            Welcome back, {user?.firstName || 'User'}! 👋
+          </p>
+        </SignedIn>
+        <SignedOut>
+          <p className="text-base-content/70 mt-2">
+            Browse quizzes or sign in to create your own
+          </p>
+        </SignedOut>
       </div>
 
+      {/* Create Quiz Button */}
+      <SignedIn>
+        <button
+          onClick={handleCreateQuiz}
+          className="btn btn-primary btn-lg gap-2"
+        >
+          <Plus className="w-5 h-5" />
+          Create New Quiz
+        </button>
+      </SignedIn>
+    </div>
+  </div>
+</div>
+
+
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container w-full mx-auto px-4 py-8">
         {/* Sort Controls */}
-        {quizzes && quizzes.length > 0 && (
-          <div className="flex items-center gap-3 mb-6">
-            <ArrowUpDown className="w-5 h-5 text-base-content/70" />
-            <span className="text-base-content/70 font-medium">Sort by:</span>
-            <div className="flex gap-2">
-              <SignedIn>
-                <button
-                  onClick={() => setSortBy('myQuizzes')}
-                  className={`btn btn-sm ${sortBy === 'myQuizzes' ? 'btn-primary' : 'btn-ghost'}`}
-                >
-                  My Quizzes
-                </button>
-              </SignedIn>
-              <button
-                onClick={() => setSortBy('newest')}
-                className={`btn btn-sm ${sortBy === 'newest' ? 'btn-primary' : 'btn-ghost'}`}
-              >
-                Newest
-              </button>
-              <button
-                onClick={() => setSortBy('mostPlayed')}
-                className={`btn btn-sm ${sortBy === 'mostPlayed' ? 'btn-primary' : 'btn-ghost'}`}
-              >
-                Most Played
-              </button>
-              <button
-                onClick={() => setSortBy('popular')}
-                className={`btn btn-sm ${sortBy === 'popular' ? 'btn-primary' : 'btn-ghost'}`}
-              >
-                Highest Success Rate
-              </button>
-            </div>
-          </div>
-        )}
+{quizzes && quizzes.length > 0 && (
+  <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+    <div className="flex items-center gap-2 flex-wrap">
+      <ArrowUpDown className="w-5 h-5 text-base-content/70" />
+      <span className="text-base-content/70 font-medium">Sort by:</span>
+    </div>
+    <div className="flex flex-wrap gap-2">
+  <SignedIn>
+    <button
+      onClick={() => setSortBy('myQuizzes')}
+      className={`btn btn-sm w-full sm:w-auto ${sortBy === 'myQuizzes' ? 'btn-primary' : 'btn-ghost'}`}
+    >
+      My Quizzes
+    </button>
+  </SignedIn>
+  <button
+    onClick={() => setSortBy('newest')}
+    className={`btn btn-sm w-full sm:w-auto ${sortBy === 'newest' ? 'btn-primary' : 'btn-ghost'}`}
+  >
+    Newest
+  </button>
+  <button
+    onClick={() => setSortBy('mostPlayed')}
+    className={`btn btn-sm w-full sm:w-auto ${sortBy === 'mostPlayed' ? 'btn-primary' : 'btn-ghost'}`}
+  >
+    Most Played
+  </button>
+  <button
+    onClick={() => setSortBy('popular')}
+    className={`btn btn-sm w-full sm:w-auto ${sortBy === 'popular' ? 'btn-primary' : 'btn-ghost'}`}
+  >
+    Highest Success Rate
+  </button>
+</div>
+
+  </div>
+)}
 
         {isLoading ? (
           <div className="flex justify-center items-center min-h-[400px]">
