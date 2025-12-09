@@ -79,6 +79,39 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// COMPLETE a quiz (track plays and success rate)
+router.post('/:id/complete', async (req, res) => {
+  try {
+    const { score, totalQuestions, userId } = req.body;
+    const quiz = await Quiz.findById(req.params.id);
+
+    if (!quiz) return res.status(404).json({ message: 'Quiz not found' });
+
+    // Calculate success rate for this attempt
+    const successRate = (score / totalQuestions) * 100;
+
+    // Update total plays
+    quiz.totalPlays += 1;
+
+    // Update average success rate
+    const currentTotal = quiz.averageSuccessRate * (quiz.totalPlays - 1);
+    quiz.averageSuccessRate = (currentTotal + successRate) / quiz.totalPlays;
+
+    await quiz.save();
+
+    res.status(200).json({
+      message: 'Quiz completed successfully',
+      quiz: {
+        totalPlays: quiz.totalPlays,
+        averageSuccessRate: quiz.averageSuccessRate
+      }
+    });
+  } catch (error) {
+    console.error('Error completing quiz:', error.message);
+    res.status(500).json({ message: 'Server Error: Could not complete quiz.' });
+  }
+});
+
 // DELETE a quiz
 router.delete('/:id', async (req, res) => {
   try {

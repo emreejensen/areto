@@ -6,7 +6,7 @@ const LeaderboardPage = () => {
   // Fetch all quizzes along with their results
   const { data: quizzes, isLoading } = useQuery({
     queryKey: ['quizzes'],
-    queryFn: quizApi.getAllQuizzesWithResults, // make sure your API returns totalPlays, averageSuccessRate
+    queryFn: quizApi.getAllQuizzes, // make sure your API returns totalPlays, averageSuccessRate
   });
 
   // Sort quizzes by different metrics
