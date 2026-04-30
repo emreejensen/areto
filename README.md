@@ -31,11 +31,12 @@ Areto emphasizes simplicity, speed, and an enjoyable study experience.
 ### **Deployment**
 - Render (frontend + backend)
 
-### **AI Tools Used During Development**
-- ChatGPT  
-- Claude  
+### **AI Tools Used During Development** 
+- Claude 
+- Copilot  
 - Lovable  
 - Bolt  
+- ChatGPT 
 
 These tools supported code suggestions, debugging, documentation assistance, and rapid prototyping.
 
