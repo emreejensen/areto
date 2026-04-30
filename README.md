@@ -25,7 +25,7 @@ Areto emphasizes simplicity, speed, and an enjoyable study experience.
 - Node.js
 - Express
 - MongoDB (Mongoose)
-- Upstash (rate limiting / Redis)
+- Upstash (rate limiting) Redis
 - Postman (API development & testing)
 
 ### **Deployment**
