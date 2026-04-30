@@ -1,5 +1,7 @@
 # Areto — Quiz & Flashcard Study Web App
 
+Testing Git Branch
+
 Areto is a full-stack study platform built as a **Senior Software Development Capstone Project**.  
 It helps users learn through **flashcards**, **quizzes**, and **custom study sets** created by either the user or an administrator.
 
